@@ -1,19 +1,20 @@
+// server.js
 const express = require('express');
 const cors = require('cors');
 const { connectDB } = require('./config/db');
-require('dotenv').config();
 
-// Connect to Database
+// Connect Database
 connectDB();
 
 const app = express();
 
-// Initialize Middleware
+// Init Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ extended: false }));
 
-// API Routes
 app.get('/', (req, res) => res.send('API Running'));
+
+// Define Routes
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/levels', require('./routes/levelRoutes'));
 

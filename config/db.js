@@ -1,3 +1,4 @@
+// config/db.js
 const { MongoClient } = require('mongodb');
 const dotenv = require('dotenv');
 
@@ -9,7 +10,7 @@ let db;
 const connectDB = async () => {
     try {
         await client.connect();
-        db = client.db(); 
+        db = client.db(); // ডিফল্ট ডাটাবেস ব্যবহার করবে যা URI-তে দেওয়া আছে
         console.log('MongoDB Connected...');
     } catch (err) {
         console.error(err.message);
